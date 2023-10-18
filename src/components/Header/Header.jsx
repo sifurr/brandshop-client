@@ -9,11 +9,11 @@ const Header = () => {
     const menuItems =
         <>
             <li><NavLink to={'/'}>Home</NavLink></li>
+            <li><NavLink to={'/add-brand'}>Add Brand</NavLink></li>
             <li><NavLink to={'/add-product'}>Add Product</NavLink></li>
             <li><NavLink to={'/my-cart'}>My Cart</NavLink></li>
             <li><Link className="lg:hidden block">Login</Link></li>
             <li><Link className="lg:hidden block">First Name</Link></li>
-
         </>
 
     return (

@@ -24,7 +24,7 @@ const Footer = () => {
             <footer className="footer bg-gray-700 text-white px-10 py-4 border-t ">
                 <aside className="items-center grid-flow-col">
                 <img src="cargo-logo.svg" className="w-[70px] lg:w-[100px]" alt="" />
-                    <p>Car Go Pvt. Ltd. <br /> &copy; copyright {year.getFullYear()}</p>
+                    <p className="pl-5">Car Go Pvt. Ltd. <br /> &copy; copyright {year.getFullYear()}</p>
                 </aside>
                 <nav className="md:place-self-center md:justify-self-end">
                     <div className="grid grid-flow-col gap-4">

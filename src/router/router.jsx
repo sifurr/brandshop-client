@@ -3,6 +3,8 @@ import Home from "../pages/Home/Home";
 import Root from "../pages/Home/Root";
 import AddProduct from "../pages/AddProduct/AddProduct";
 import MyCart from "../pages/MyCart/MyCart";
+import Brand from "../pages/Brand/Brand";
+import AddBrand from "../pages/AddBrand/AddBrand";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +13,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: ()=>fetch(`http://localhost:5000/products`)
       },
       {
         path: '/add-product',
@@ -20,6 +23,14 @@ const router = createBrowserRouter([
       {
         path: '/my-cart',
         element: <MyCart></MyCart>
+      },
+      {
+        path: '/brand/:id',
+        element: <Brand></Brand>
+      },
+      {
+        path: '/add-brand',
+        element: <AddBrand></AddBrand>
       }
     ]
   }
