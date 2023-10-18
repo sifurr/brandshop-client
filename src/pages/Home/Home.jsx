@@ -5,7 +5,7 @@ import NewsLetter from "../../components/NewsLetter/NewsLetter";
 
 const Home = () => {
     return (
-        <div className="bg-gray-900 min-h-screen text-white">            
+        <div className="pt-10 bg-gray-900 min-h-screen text-white">            
            <Banner></Banner>
            <hr />
            <Brands></Brands>   
