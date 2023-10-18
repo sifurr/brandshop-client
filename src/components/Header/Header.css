@@ -1,0 +1,5 @@
+.active{
+    text-decoration: underline;
+    text-decoration-color: rgb(38, 189, 248);
+    text-decoration-thickness: 3px;
+}
