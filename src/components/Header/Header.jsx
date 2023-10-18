@@ -29,7 +29,7 @@ const Header = () => {
                 </div>
                 <div>
                     <Link className="normal-case text-xl flex items-center gap-3">
-                        <img src="cargo-logo.svg" className="h-[50px] lg:h-[70px]" alt="" />
+                        <img src="cargo-logo.svg" className="w-[60px] lg:w-[60px]" alt="" />
                         Car GO
                     </Link>
                 </div>

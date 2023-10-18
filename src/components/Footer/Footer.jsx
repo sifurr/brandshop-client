@@ -7,7 +7,7 @@ const Footer = () => {
             <footer className="footer p-10 bg-gray-800 text-white">
                 <nav>
                     <header className="footer-title">Services</header>
-                    <Link className="link link-hover">Sle</Link>
+                    <Link className="link link-hover">Sale</Link>
                     <Link className="link link-hover">Purchase</Link>
                 </nav>
                 <nav>
@@ -23,7 +23,7 @@ const Footer = () => {
             </footer>
             <footer className="footer bg-gray-700 text-white px-10 py-4 border-t ">
                 <aside className="items-center grid-flow-col">
-                <img src="cargo-logo.svg" className="h-[50px] lg:h-[70px]" alt="" />
+                <img src="cargo-logo.svg" className="w-[70px] lg:w-[100px]" alt="" />
                     <p>Car Go Pvt. Ltd. <br /> &copy; copyright {year.getFullYear()}</p>
                 </aside>
                 <nav className="md:place-self-center md:justify-self-end">
