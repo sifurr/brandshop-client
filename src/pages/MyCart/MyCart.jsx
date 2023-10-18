@@ -1,7 +1,7 @@
 const MyCart = () => {
     return (
-        <div>
-           <h2 className="text-center text-2xl">My Cart Page</h2>
+        <div className="bg-gray-900 min-h-screen py-10">
+           <h2 className="text-center text-5xl font-bold text-white">My Cart Page</h2>
         </div>
     );
 };
