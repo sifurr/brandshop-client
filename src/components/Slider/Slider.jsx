@@ -1,24 +1,26 @@
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import './Slider.css'
+import Marquee from "react-fast-marquee";
 
-const Slider = () => {
-    const images = ["Need to supply images"];
+const Slider = ({images, brandName}) => {
+
+    
     return (
         <div>
             <Slide className="">
                 <div className="each-slide-effect">
-                    <div style={{ 'backgroundImage': `url(${images[0]})`,  }}>
-                        {/* <span>Slide 1</span> */}
+                    <div className='bg-cover bg-center' style={{ 'backgroundImage': `url(${images[0]})`,  }}>
+                        <span className="text-5xl">{brandName}</span>
                     </div>
                 </div>
                 <div className="each-slide-effect">
-                    <div style={{ 'backgroundImage': `url(${images[1]})` }}>
+                    <div className='bg-cover bg-center' style={{ 'backgroundImage': `url(${images[1]})` }}>
                         {/* <span>Slide 2</span> */}
                     </div>
                 </div>
                 <div className="each-slide-effect">
-                    <div style={{ 'backgroundImage': `url(${images[2]})` }}>
+                    <div className='bg-cover bg-center' style={{ 'backgroundImage': `url(${images[2]})` }}>
                         {/* <span>Slide 3</span> */}
                     </div>
                 </div>
