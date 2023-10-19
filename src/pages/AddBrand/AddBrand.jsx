@@ -25,7 +25,7 @@ const AddBrand = () => {
                         title:'Brand added successfully!',
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    })                    
                     console.log("Received data: >>>>\n",data);
                 }
             })
