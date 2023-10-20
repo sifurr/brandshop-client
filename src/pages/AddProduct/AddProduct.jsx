@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../provider/AuthProvider';
 
+
+
 const AddProduct = () => {
 
     const {user} = useContext(AuthContext);
@@ -91,3 +93,20 @@ const AddProduct = () => {
 };
 
 export default AddProduct;
+
+
+
+
+/* 
+{"_id":{"$oid":"652fdc218040696aa15102dd"},"name":"Toyota suv","image":"https://di-uploads-pod13.dealerinspire.com/toyotaofdowntownla/uploads/2020/05/2020-Toyota-C-HR-lineup-image.png","brandName":"Toyota","type":"suv","price":"38150","shortDescription":"The price range for the Toyota C-HR varies based on the trim level you choose.","rating":""}
+
+{"_id":{"$oid":"6530379f9b01308a01889fff"},"name":"Toyota Night Shade","image":"https://i.ibb.co/sKwLyLk/1670877167-Camry-SE-Trim.jpg","brandName":"Toyota","type":"sedan","price":"50000","shortDescription":"Lets blaze the night","rating":"4"}
+
+
+{"_id":{"$oid":"652fdc218040696aa15102dd"},"name":"Toyota suv","image":"https://di-uploads-pod13.dealerinspire.com/toyotaofdowntownla/uploads/2020/05/2020-Toyota-C-HR-lineup-image.png","brandName":"Toyota","type":"suv","price":"38150","shortDescription":"The price range for the Toyota C-HR varies based on the trim level you choose.","rating":"","email":"kaka@kaki.com"}
+
+
+{"_id":{"$oid":"65324da9828db1ebc4173337"},"name":"BMW Design Boss: Why Do EVs Need To Look Different","image":"https://i.ibb.co/R3vkMfD/bmw-i5-edrive40-2023.jpg","brandName":"BMW","type":"Select a product type","price":"200000","shortDescription":"Head of BMW Brand Design Domagoj Dukec doesn’t understand automakers adopting EV-specific design language.","rating":"","email":"kaka@kaki.com"}
+
+
+*/
