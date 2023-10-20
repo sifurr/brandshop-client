@@ -8,6 +8,8 @@ import AddBrand from "../pages/AddBrand/AddBrand";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
 import PrivateRoute from "./PrivatRoute";
+import ProductDetails from "../pages/ProductDetails/ProductDetails";
+import ProductUpdate from "../pages/ProductUpdate/ProductUpdate";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/add-brand',
-        element: <AddBrand></AddBrand>
+        element: <PrivateRoute><AddBrand></AddBrand></PrivateRoute>
       },
       {
         path: '/login',
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/details/:id',
+        element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>
+      },
+      {
+        path: '/update/:id',
+        element: <PrivateRoute><ProductUpdate></ProductUpdate></PrivateRoute>
       }
     ]
   }
