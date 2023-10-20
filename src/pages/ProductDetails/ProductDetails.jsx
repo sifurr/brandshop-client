@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Rating from 'react-rating';
 import Swal from 'sweetalert2';
+import { AuthContext } from "../../provider/AuthProvider";
 
 const ProductDetails = () => {
+    const {user} = useContext(AuthContext);
+    const {email} = user;
+    console.log("user email",typeof email);
 
     const [product, setProduct] = useState([]);
     const parameter = useParams();
     console.log("Id from details page: ", parameter.id);
-    const {_id, brandName, image, name, price, rating, shortDescription, type } = product;
+    const {brandName, image, name, price, rating, shortDescription, type } = product;
     console.log(name);
 
     useEffect(() => {
@@ -21,15 +25,15 @@ const ProductDetails = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const handleAddToCart = id => { 
+    const handleAddToCart = productId => { 
       
-        const productId = {id}
-        // console.log("Product info: >>> \n",product);
+        const addedProductId = {productId, email};
+        console.log("Product id info: >>> \n",productId);
 
-        fetch(`http://localhost:5000/products`,{
+        fetch(`http://localhost:5000/carts`,{
             method: 'POST',
             headers: {'content-type':'application/json'},
-            body: JSON.stringify(productId)
+            body: JSON.stringify(addedProductId)
         })
             .then(res => res.json())
             .then(data => {
@@ -40,7 +44,7 @@ const ProductDetails = () => {
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    console.log("Received data: >>>>\n",data);
+                    console.log("Received id data: >>>>\n",data);
                 }
             })
     }
@@ -289,7 +293,7 @@ const ProductDetails = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 ">
-                                        <button onClick={()=>handleAddToCart(_id)} className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500">
+                                        <button onClick={()=>handleAddToCart(parameter.id)} className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500">
                                             Add to Cart
                                         </button>
                                     </div>

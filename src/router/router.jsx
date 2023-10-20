@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/my-cart',
-        element: <MyCart></MyCart>
+        element: <PrivateRoute><MyCart></MyCart></PrivateRoute>
       },
       {
         path: '/brand/:brandName',

@@ -1,6 +1,12 @@
+import { useContext } from 'react';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const AddProduct = () => {
+
+    const {user} = useContext(AuthContext);
+    const {email} = user;
+    console.log("user email",typeof email);
 
     const handleAddProduct = event => {
         event.preventDefault();
@@ -12,7 +18,7 @@ const AddProduct = () => {
         const price = form.price.value;
         const shortDescription = form.shortDescription.value;
         const rating = form.rating.value;
-        const product = {name,image,brandName,type,price,shortDescription, rating}
+        const product = {name,image,brandName,type,price,shortDescription, rating, email}
         // console.log("Product info: >>> \n",product);
 
         fetch(`http://localhost:5000/products`,{
