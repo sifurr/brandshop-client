@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import Rating from 'react-rating'
+import Rating from 'react-rating';
+import Swal from 'sweetalert2';
 
 const ProductDetails = () => {
 
     const [product, setProduct] = useState([]);
     const parameter = useParams();
     console.log("Id from details page: ", parameter.id);
-    const { brandName, image, name, price, rating, shortDescription, type } = product;
+    const {_id, brandName, image, name, price, rating, shortDescription, type } = product;
     console.log(name);
 
     useEffect(() => {
@@ -19,6 +20,30 @@ const ProductDetails = () => {
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+    const handleAddToCart = id => { 
+      
+        const productId = {id}
+        // console.log("Product info: >>> \n",product);
+
+        fetch(`http://localhost:5000/products`,{
+            method: 'POST',
+            headers: {'content-type':'application/json'},
+            body: JSON.stringify(productId)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){                    
+                    Swal.fire({
+                        icon: 'success',                        
+                        title:'Product added to cart!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                    console.log("Received data: >>>>\n",data);
+                }
+            })
+    }
 
     return (
         <div className="bg-gray-900 min-h-screen py-10">
@@ -264,7 +289,7 @@ const ProductDetails = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 ">
-                                        <button className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500">
+                                        <button onClick={()=>handleAddToCart(_id)} className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500">
                                             Add to Cart
                                         </button>
                                     </div>
