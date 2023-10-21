@@ -25,71 +25,64 @@ const ProductDetails = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const handleAddToCart = productId => { 
-      
-        const addedProductId = {productId, email};
-        console.log("Product id info: >>> \n",productId);
 
-        fetch(`http://localhost:5000/carts`,{
-            method: 'POST',
-            headers: {'content-type':'application/json'},
+    const handleAddToCart = id => {
+
+        // const _id = id;
+        const cartRequest = true;
+        const addedProductId = { cartRequest };
+        console.log("cart request info: >>> \n", cartRequest);
+        
+        fetch(`http://localhost:5000/products/${id}`, {
+            method: 'PATCH',
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(addedProductId)
         })
             .then(res => res.json())
             .then(data => {
-                if(data.insertedId){                    
+                // console.log("Patch data info: ",data);
+                if (data.modifiedCount > 0) {
                     Swal.fire({
-                        icon: 'success',                        
-                        title:'Product added to cart!',
-                        showConfirmButton: false,
-                        timer: 1500
+                        title: 'Success!',
+                        text: 'Product updated successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
                     })
-                    console.log("Received id data: >>>>\n",data);
                 }
             })
     }
 
+
     return (
         <div className="bg-gray-900 min-h-screen py-10">
-            <h2 className="text-5xl text-center text-white font-bold">{name}</h2>
+            <h2 className="text-5xl text-center text-white font-bold">Details</h2>
             <div>
                 <section className="py-20 font-poppins text-white">
                     <div className="max-w-6xl px-4 mx-auto">
                         <div className="flex flex-wrap mb-24 -mx-4">
                             <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
                                 <div className="sticky top-0 z-40 overflow-hidden ">
-                                    <div className="relative mb-6 lg:mb-10 ">
-                                        <Link className="absolute left-0 transform lg:ml-2 top-1/2 translate-1/2" to="#">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-5 h-5 text-blue-500 bi bi-chevron-left dark:text-blue-200" viewBox="0 0 16 16">
-                                                <path fillRule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
-                                            </svg>
-                                        </Link>
-                                        {/* Images */}
-                                        <img className="object-cover w-full lg:h-1/2" src={image} alt="" />
-                                        <Link className="absolute right-0 transform lg:mr-2 top-1/2 translate-1/2" to="#">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-5 h-5 text-blue-500 bi bi-chevron-right dark:text-blue-200" viewBox="0 0 16 16">
-                                                <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
-                                            </svg>
-                                        </Link>
+                                    <div className="relative mb-6 lg:mb-10 ">  
+                                        <img className="object-cover w-full lg:h-1/2" src={image} alt="" />                    
                                     </div>
-                                    <div className="flex-wrap hidden -mx-2 md:flex">
+                                    <div className="flex-wrap p-2 hidden -mx-2 md:flex">
                                         <div className="w-1/2 p-2 sm:w-1/4 bg-white">
-                                            <Link className="block border border-transparent hover:border-blue-400" to="#">
+                                            <Link className="block border border-transparent hover:border-orange-500" to="#">
                                                 <img className="object-cover w-full lg:h-32" src={image} alt="" />
                                             </Link>
                                         </div>
                                         <div className="w-1/2 p-2 sm:w-1/4 bg-red-600">
-                                            <Link className="block border border-transparent hover:border-blue-400" to="#">
+                                            <Link className="block border border-transparent hover:border-orange-500" to="#">
                                                 <img className="object-cover w-full lg:h-32" src={image} alt="" />
                                             </Link>
                                         </div>
                                         <div className="w-1/2 p-2 sm:w-1/4 bg-gray-400">
-                                            <Link className="block border border-transparent hover:border-blue-400" to="#">
+                                            <Link className="block border border-transparent hover:border-orange-500" to="#">
                                                 <img className="object-cover w-full lg:h-32" src={image} alt="" />
                                             </Link>
                                         </div>
                                         <div className="w-1/2 p-2 sm:w-1/4 bg-blue-800">
-                                            <Link className="block border border-transparent hover:border-blue-400" to="#">
+                                            <Link className="block border border-transparent hover:border-orange-500" to="#">
                                                 <img className="object-cover w-full lg:h-32" src={image} alt="" />
                                             </Link>
                                         </div>
@@ -116,20 +109,20 @@ const ProductDetails = () => {
                                 <div className="lg:pl-20">
                                     <div className="mb-6 ">
                                         <span className="text-red-500 dark:text-red-200">New</span>
-                                        <h2 className="max-w-xl mt-2 mb-4 text-5xl font-bold md:text-6xl font-heading dark:text-gray-300">
-                                            Buy {name}
+                                        <h2 className="max-w-xl mt-2 mb-4 text-3xl font-bold md:text-3xl font-heading dark:text-gray-300">
+                                            <span className="text-orange-500">Buy</span> {name}
                                         </h2>
                                         <p className="max-w-md mb-4 text-gray-500 dark:text-gray-400">
                                             {shortDescription}
                                         </p>
-                                        <Link to="/" className="text-blue-500 hover:underline dark:text-gray-400">
+                                        <Link to="/" className="text-orange-500 font-bold hover:underline dark:text-gray-400">
                                             {brandName}</Link>
                                     </div>
                                     <div className="mt-6">
                                         <p className="mb-2 text-lg font-semibold dark:text-gray-400">Info</p>
                                         <div className="grid grid-cols-2 gap-4 pb-4 mt-2 mb-4 border-b-2 border-gray-300 lg:grid-cols-3 dark:border-gray-600">
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-600 hover:border-orange-500">
                                                     <div>
                                                         <div className="mb-2 font-semibold dark:text-gray-400">
                                                             <span className="text-xs pr-3">Price:</span>${price}
@@ -138,7 +131,7 @@ const ProductDetails = () => {
                                                 </button>
                                             </div>
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-600 hover:border-orange-500">
                                                     <div>
                                                         <div className="mb-2 font-semibold dark:text-gray-400">
                                                             <span className="text-xs pr-3">Rating</span>
@@ -154,7 +147,7 @@ const ProductDetails = () => {
                                                 </button>
                                             </div>
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-600 hover:border-orange-500">
                                                     <div>
                                                         <div className="mb-2 font-semibold dark:text-gray-400">
                                                             <span className="text-xs pr-3">Category:</span>{type}
@@ -169,7 +162,7 @@ const ProductDetails = () => {
                                         <div className="grid grid-cols-2 gap-4 pb-4 border-b-2 border-gray-300 lg:grid-cols-3 dark:border-gray-600">
 
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-500 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-500 hover:border-orange-500">
                                                     <div>
                                                         <div className="w-8 h-8 mx-auto mb-2 bg-white rounded-full dark:bg-gray-600">
                                                         </div>
@@ -180,7 +173,7 @@ const ProductDetails = () => {
                                                 </button>
                                             </div>
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-500 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-500 hover:border-orange-500">
                                                     <div>
                                                         <div className="w-8 h-8 mx-auto mb-2 bg-red-500 rounded-full">
                                                         </div>
@@ -191,7 +184,7 @@ const ProductDetails = () => {
                                                 </button>
                                             </div>
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-500 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-500 hover:border-orange-500">
                                                     <div>
                                                         <div className="w-8 h-8 mx-auto mb-2 rounded-full bg-gray-400">
                                                         </div>
@@ -202,7 +195,7 @@ const ProductDetails = () => {
                                                 </button>
                                             </div>
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-500 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-500 hover:border-orange-500">
                                                     <div>
                                                         <div className="w-8 h-8 mx-auto mb-2 bg-blue-900 rounded-full">
                                                         </div>
@@ -221,7 +214,7 @@ const ProductDetails = () => {
                                             What is right for you?</Link>
                                         <div className="grid grid-cols-2 gap-4 pb-4 mt-2 mb-4 border-b-2 border-gray-300 lg:grid-cols-3 dark:border-gray-600">
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-600 hover:border-orange-500">
                                                     <div>
                                                         <div className="mb-2 font-semibold dark:text-gray-400">
                                                             Brand New
@@ -230,7 +223,7 @@ const ProductDetails = () => {
                                                 </button>
                                             </div>
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full py-4 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-600 hover:border-orange-500">
                                                     <div>
                                                         <div className="mb-2 font-semibold dark:text-gray-400">
                                                             Reconditioned
@@ -245,7 +238,7 @@ const ProductDetails = () => {
                                         <p className="mb-4 text-lg font-semibold dark:text-gray-400">Choose payment type</p>
                                         <div className="grid grid-cols-2 gap-4 pb-4 mt-2 mb-4 border-b-2 border-gray-300 lg:grid-cols-3 dark:border-gray-600">
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full px-2 py-6 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full px-2 py-6 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-600 hover:border-orange-500">
                                                     <div>
                                                         <p className="px-2 text-base font-semibold text-center text-white dark:text-gray-400">
                                                             Pay in full
@@ -254,7 +247,7 @@ const ProductDetails = () => {
                                                 </button>
                                             </div>
                                             <div>
-                                                <button className="flex items-center justify-center w-full h-full px-2 py-6 border-2 border-gray-300 dark:hover:border-blue-400 dark:border-gray-600 hover:border-blue-400">
+                                                <button className="flex items-center justify-center w-full h-full px-2 py-6 border-2 border-gray-300 dark:hover:border-orange-500 dark:border-gray-600 hover:border-orange-500">
                                                     <div>
                                                         <p className="px-2 text-base font-semibold text-center text-white dark:text-gray-400">
                                                             Pay monthly
@@ -293,7 +286,7 @@ const ProductDetails = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 ">
-                                        <button onClick={()=>handleAddToCart(parameter.id)} className="w-full px-4 py-2 font-bold text-white bg-blue-400 lg:w-96 hover:bg-blue-500">
+                                        <button onClick={()=>handleAddToCart(parameter.id)} className="w-full px-4 py-2 font-bold text-white bg-orange-500 hover:bg-orange-600 lg:w-96">
                                             Add to Cart
                                         </button>
                                     </div>
@@ -301,7 +294,7 @@ const ProductDetails = () => {
                                         <div>
                                             <h2 className="mb-2 text-lg font-bold text-white dark:text-gray-400">Still deciding?
                                             </h2>
-                                            <p className="mb-2 text-sm dark:text-gray-400"> You're always welcome for any query! </p>
+                                            <p className="mb-2 text-sm dark:text-gray-400"> You are always welcome for any query! </p>
                                         </div>
                                         <span className="ml-6">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="w-6 h-6 text-blue-500 cursor-pointer hover:text-blue-600 dark:hover:text-blue-300 bi bi-bookmark dark:text-gray-400" viewBox="0 0 16 16">

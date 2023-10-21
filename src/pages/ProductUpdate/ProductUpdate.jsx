@@ -88,8 +88,9 @@ const ProductUpdate = () => {
 
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="rating" className="block mb-2 text-sm font-medium text-white dark:text-white">Short Description</label>
-                    <textarea type="text" defaultValue={shortDescription} name="shortDescription" id="rating" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Short description" />
+                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-white dark:text-white">Short Description</label>
+                    <textarea defaultValue={shortDescription} name="shortDescription" id="description" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Short description" />
+                
                 </div>
                 <div className="mb-6">
                     <label htmlFor="rating" className="block mb-2 text-sm font-medium text-white dark:text-white">Rating</label>

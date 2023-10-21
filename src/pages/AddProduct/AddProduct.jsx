@@ -20,7 +20,8 @@ const AddProduct = () => {
         const price = form.price.value;
         const shortDescription = form.shortDescription.value;
         const rating = form.rating.value;
-        const product = {name,image,brandName,type,price,shortDescription, rating, email}
+        const cartRequest = false;
+        const product = {name,image,brandName,type,price,shortDescription, rating, email, cartRequest}
         // console.log("Product info: >>> \n",product);
 
         fetch(`http://localhost:5000/products`,{
@@ -77,15 +78,15 @@ const AddProduct = () => {
 
                 </div>
                 <div className="mb-6">
-                    <label htmlFor="rating" className="block mb-2 text-sm font-medium text-white dark:text-white">Short Description</label>
-                    <textarea type="text" name="shortDescription" id="rating" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Short description"  />
+                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-white dark:text-white">Short Description</label>
+                    <textarea name="shortDescription" id="description" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Short description"  />
                 </div>
                 <div className="mb-6">
                     <label htmlFor="rating" className="block mb-2 text-sm font-medium text-white dark:text-white">Rating</label>
                     <input name="rating" type="text" id="rating" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Rating"  />
                 </div>
 
-                <button type="submit" className="text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Product</button>
+                <button type="submit" className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Product</button>
             </form>
 
         </div>

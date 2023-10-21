@@ -3,16 +3,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import { Link, NavLink } from "react-router-dom";
 import './Header.css'
+import { CiLight } from 'react-icons/ci';
 
-const Header = () => {
+// eslint-disable-next-line react/prop-types
+const Header = ({ handleThemeToggler }) => {
     const { logOut, user } = useContext(AuthContext);
-
-    // const displayName = user.displayName;
-    // const email = user.email;
-    // const photoURL = user.photoURL;
-    // const emailVerified = user.emailVerified;
-
-    // console.log(displayName, email, photoURL, emailVerified);
 
     const handleLogOut = () => {
         logOut()
@@ -39,6 +34,8 @@ const Header = () => {
 
 
 
+
+
     return (
         <div className="navbar px-10 sticky top-0 w-full bg-opacity-50 z-50 text-white backdrop-filter backdrop-blur-md bg-gray-700 border-b border-gray-100 shadow-lg">
             <div className="navbar-start">
@@ -55,11 +52,14 @@ const Header = () => {
                                 </>
                                 :
                                 <>
-                                    <li><Link className="lg:hidden block">First Name</Link></li>
+                                    <li><Link className="lg:hidden block">{user?.displayName}</Link></li>
                                     <li><NavLink to={'/add-product'}>Add Product</NavLink></li>
                                     <li><NavLink to={'/my-cart'}>My Cart</NavLink></li>
                                     <li><NavLink to={'/add-brand'}>Add Brand</NavLink></li>
-                                    <li><Link to={`/`} onClick={handleLogOut} className="block lg:hidden ">Logout</Link></li>
+                                    <li><Link to={`/`} onClick={handleLogOut} className="block lg:hidden">Logout</Link></li>
+                            <Link onClick={handleThemeToggler} className='px-4 py-1'>
+                                <span className='dark:text-orange-500 font-bold text-black text-xl'>Light/Dark</span>                            
+                            </Link>
                                 </>
                         }
                     </ul>
@@ -67,7 +67,7 @@ const Header = () => {
                 <div>
                     <Link className="normal-case text-xl flex items-center gap-3">
                         <img src="cargo-logo.svg" className="w-[60px] lg:w-[60px]" alt="" />
-                        Car GO
+                        <span className='font-bold text-3xl'>Car <span className='text-orange-500'>GO</span></span>
                     </Link>
                 </div>
             </div>
@@ -76,13 +76,15 @@ const Header = () => {
                     {
                         !user ?
                             <>
-                                <li><NavLink to={'/'}>Home</NavLink></li>                                
+                                <li><NavLink to={'/'}>Home</NavLink></li>
+
+
                             </>
                             :
-                            <>                               
+                            <>
                                 <li><NavLink to={'/add-product'}>Add Product</NavLink></li>
                                 <li><NavLink to={'/my-cart'}>My Cart</NavLink></li>
-                                <li><NavLink to={'/add-brand'}>Add Brand</NavLink></li>
+                                <li><NavLink className="hidden" to={'/add-brand'}>Add Brand</NavLink></li>
                             </>
                     }
                 </ul>
@@ -94,6 +96,9 @@ const Header = () => {
                 {
                     user ?
                         <>
+                        <Link onClick={handleThemeToggler} className='px-4 py-1'>
+                                <span className='dark:text-orange-500 font-bold text-black text-xl hidden md:block lg:text-3xl'><CiLight></CiLight></span>                            
+                            </Link>
                             <Link to={`/`} onClick={handleLogOut} className="hidden lg:block">Logout</Link>
                             <Link className="hidden lg:block">{user?.displayName}</Link>
                             <Link className="">
@@ -106,9 +111,16 @@ const Header = () => {
                                     </div>
                                 </label>
                             </Link>
+                            
                         </>
                         :
-                        <Link to={`/login`} className="hidden lg:block">Login</Link>
+                        <>                          
+
+                            <Link onClick={handleThemeToggler} className='px-4 py-1'>
+                                <span className='dark:text-orange-500 font-bold text-black text-3xl'><CiLight></CiLight></span>                            
+                            </Link>
+                            <Link to={`/login`} className="hidden lg:block">Login</Link>
+                        </>
                 }
 
             </div>

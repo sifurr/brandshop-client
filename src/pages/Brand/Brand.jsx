@@ -32,13 +32,13 @@ const Brand = () => {
     return (
         <div className="bg-gray-900 min-h-screen py-10">
             <div className="">
-                <h2 className="text-center text-5xl font-bold text-white pb-5">Brand Page of {brandName}</h2>
+                <h2 className="text-center text-5xl font-bold text-white pb-5">My Brand <span className="text-orange-500">{brandName}</span></h2>
                 {products.length !== 0 ?
                     <Slider brandName={brandName} images={images.slice(0, 3)}></Slider>
                     : ""
                 }
             </div>
-            <div className="grid grid-cols-2 gap-10 w-2/3 mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-2/3 mx-auto">
                 {
                     products.length !== 0 ?
                         products.map(product => <MyProduct key={product._id} product={product}></MyProduct>)

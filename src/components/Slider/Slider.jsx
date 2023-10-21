@@ -1,27 +1,47 @@
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css'
 import './Slider.css'
-import Marquee from "react-fast-marquee";
 
-const Slider = ({images, brandName}) => {
 
-    
+const Slider = ({ images, brandName }) => {
+
+
     return (
         <div>
             <Slide className="">
                 <div className="each-slide-effect">
-                    <div className='bg-cover bg-center' style={{ 'backgroundImage': `url(${images[0]})`,  }}>
-                        <span className="text-5xl">{brandName}</span>
+                    <div className='bg-cover bg-center' style={{ 'backgroundImage': `url(${images[0]})`, }}>
+                        {/* <span className="text-5xl">{brandName}</span> */}
+                        <div className="wrapper">
+                            <svg>
+                                <text x="50%" y="50%" dy=".35em" textAnchor="middle">
+                                    {brandName}
+                                </text>
+                            </svg>
+                        </div>
                     </div>
                 </div>
                 <div className="each-slide-effect">
                     <div className='bg-cover bg-center' style={{ 'backgroundImage': `url(${images[1]})` }}>
-                        {/* <span>Slide 2</span> */}
+                        
+                        <div className="wrapper">
+                            <svg>
+                                <text x="50%" y="50%" dy=".35em" textAnchor="middle">
+                                    {brandName}
+                                </text>
+                            </svg>
+                        </div>
                     </div>
                 </div>
                 <div className="each-slide-effect">
                     <div className='bg-cover bg-center' style={{ 'backgroundImage': `url(${images[2]})` }}>
-                        {/* <span>Slide 3</span> */}
+                    <div className="wrapper">
+                            <svg>
+                                <text x="50%" y="50%" dy=".35em" textAnchor="middle">
+                                    {brandName}
+                                </text>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </Slide>

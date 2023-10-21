@@ -12,13 +12,13 @@ const Home = () => {
     // console.log("Loaded brands from home: ", loadedBrands)   
 
     return (
-        <div className="pt-10 bg-gray-900 min-h-screen text-white">            
+        <div className="pt-10 min-h-screen text-white">            
            <Banner></Banner>
            <hr />
             
            <Brands brands={loadedBrands}></Brands>   
            <hr />
-           <Team></Team>
+           <Team products={loadedBrands}></Team>
            <hr />
            <NewsLetter></NewsLetter>
            <hr />        

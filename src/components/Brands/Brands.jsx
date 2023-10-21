@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const Brands = ({ brands }) => {
 
     return (
-        <div>
-            <h2 className="text-center text-5xl font-bold my-10">Featured Brands</h2>
+        <div className="my-10 lg:my-20">
+            <h2 className="text-center text-5xl font-bold dark:text-white text-black my-10">Featured Brands</h2>
 
-            <section className="p-10 min-h-screen w-2/3 mx-auto flex md:flex-row justify-evenly gap-5 items-center bg-gray-800 flex-wrap sm:flex-col">
+            <section className="p-10 shadow dark:bg-gray-700 min-h-screen w-2/3 mx-auto flex md:flex-row justify-evenly gap-5 items-center flex-wrap sm:flex-col">
                 {
                     brands.map(brand =>  
                         <Link key={brand._id} to={`/brand/${brand.brandName}`} >

@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivatRoute";
 import ProductDetails from "../pages/ProductDetails/ProductDetails";
 import ProductUpdate from "../pages/ProductUpdate/ProductUpdate";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import AddTeam from "../pages/AddBrand/AddTeam";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element: <PrivateRoute><ProductUpdate></ProductUpdate></PrivateRoute>
+      },
+      {
+        path: '/add-team',
+        element: <PrivateRoute><AddTeam></AddTeam></PrivateRoute>
       }
     ]
   }
