@@ -13,4 +13,5 @@
 
 
 
-Live site: https://brandshop-assignment-10-62b49.web.app
+Live site: https://brandshop-assignment-10-62b49.web.app/
+
