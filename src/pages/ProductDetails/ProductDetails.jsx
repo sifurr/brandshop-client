@@ -12,7 +12,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState([]);
     const parameter = useParams();
     console.log("Id from details page: ", parameter.id);
-    const {brandName, image, name, price, rating, shortDescription, type } = product;
+    const { brandName, image, name, price, rating, shortDescription, type } = product;
     console.log(name);
 
     useEffect(() => {
@@ -24,6 +24,7 @@ const ProductDetails = () => {
             })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
 
 
     const handleAddToCart = id => {
@@ -43,10 +44,11 @@ const ProductDetails = () => {
                 // console.log("Patch data info: ",data);
                 if (data.modifiedCount > 0) {
                     Swal.fire({
-                        title: 'Success!',
-                        text: 'Product updated successfully!',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
+                        icon: 'success',                        
+                        title:'Product updated successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                        
                     })
                 }
             })
@@ -286,6 +288,7 @@ const ProductDetails = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 ">
+                                       
                                         <button onClick={()=>handleAddToCart(parameter.id)} className="w-full px-4 py-2 font-bold text-white bg-orange-500 hover:bg-orange-600 lg:w-96">
                                             Add to Cart
                                         </button>
