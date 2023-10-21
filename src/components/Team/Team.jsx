@@ -5,7 +5,7 @@ const Team = () => {
     const [teams, setTeams] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/team`)
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/team`)
             .then(res => res.json())
             .then(data => {
                 setTeams(data);

@@ -5,9 +5,9 @@ import Swal from 'sweetalert2';
 import { AuthContext } from "../../provider/AuthProvider";
 
 const ProductDetails = () => {
-    const {user} = useContext(AuthContext);
-    const {email} = user;
-    console.log("user email",typeof email);
+    const { user } = useContext(AuthContext);
+    const { email } = user;
+    console.log("user email", typeof email);
 
     const [product, setProduct] = useState([]);
     const parameter = useParams();
@@ -16,7 +16,7 @@ const ProductDetails = () => {
     console.log(name);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products/${parameter.id}`)
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/products/${parameter.id}`)
             .then(res => res.json())
             .then(data => {
                 console.log("single product data data : ", data);
@@ -33,8 +33,8 @@ const ProductDetails = () => {
         const cartRequest = true;
         const addedProductId = { cartRequest };
         console.log("cart request info: >>> \n", cartRequest);
-        
-        fetch(`http://localhost:5000/products/${id}`, {
+
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/products/${id}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(addedProductId)
@@ -44,11 +44,11 @@ const ProductDetails = () => {
                 // console.log("Patch data info: ",data);
                 if (data.modifiedCount > 0) {
                     Swal.fire({
-                        icon: 'success',                        
-                        title:'Product updated successfully!',
+                        icon: 'success',
+                        title: 'Product updated successfully!',
                         showConfirmButton: false,
                         timer: 1500
-                        
+
                     })
                 }
             })
@@ -64,8 +64,8 @@ const ProductDetails = () => {
                         <div className="flex flex-wrap mb-24 -mx-4">
                             <div className="w-full px-4 mb-8 md:w-1/2 md:mb-0">
                                 <div className="sticky top-0 z-40 overflow-hidden ">
-                                    <div className="relative mb-6 lg:mb-10 ">  
-                                        <img className="object-cover w-full lg:h-1/2" src={image} alt="" />                    
+                                    <div className="relative mb-6 lg:mb-10 ">
+                                        <img className="object-cover w-full lg:h-1/2" src={image} alt="" />
                                     </div>
                                     <div className="flex-wrap p-2 hidden -mx-2 md:flex">
                                         <div className="w-1/2 p-2 sm:w-1/4 bg-white">
@@ -137,13 +137,13 @@ const ProductDetails = () => {
                                                     <div>
                                                         <div className="mb-2 font-semibold dark:text-gray-400">
                                                             <span className="text-xs pr-3">Rating</span>
-                                                            
+
                                                             <Rating className="pt-3"
                                                                 initialRating={rating}
                                                                 readonly
-                                                                
-                                                            />                                                            
-                                                            
+
+                                                            />
+
                                                         </div>
                                                     </div>
                                                 </button>
@@ -288,8 +288,8 @@ const ProductDetails = () => {
                                         </div>
                                     </div>
                                     <div className="mt-6 ">
-                                       
-                                        <button onClick={()=>handleAddToCart(parameter.id)} className="w-full px-4 py-2 font-bold text-white bg-orange-500 hover:bg-orange-600 lg:w-96">
+
+                                        <button onClick={() => handleAddToCart(parameter.id)} className="w-full px-4 py-2 font-bold text-white bg-orange-500 hover:bg-orange-600 lg:w-96">
                                             Add to Cart
                                         </button>
                                     </div>

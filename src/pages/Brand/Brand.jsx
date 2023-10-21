@@ -14,7 +14,7 @@ const Brand = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/products`)
             .then(res => res.json())
             .then(data => {
                 const receivedData = data.filter(prod => prod.brandName == brandName);
@@ -42,7 +42,7 @@ const Brand = () => {
                 {
                     products.length !== 0 ?
                         products.map(product => <MyProduct key={product._id} product={product}></MyProduct>)
-                        : <div className="col-span-2 mt-[10%]"><NoProduct></NoProduct></div> 
+                        : <div className="col-span-2 mt-[10%]"><NoProduct></NoProduct></div>
                 }
             </div>
         </div>

@@ -10,23 +10,23 @@ const AddBrand = () => {
         const brand = { brandLogo, brandName }
         console.log("Brand info: >>> \n", brand);
 
-        fetch(`http://localhost:5000/brands`,{
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/brands`, {
             method: 'POST',
-            headers: {'content-type':'application/json'},
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(brand)
         })
             .then(res => res.json())
             .then(data => {
-                if(data.insertedId){
+                if (data.insertedId) {
                     form.reset();
                     // Swal.fire('Brand added successfully!')
                     Swal.fire({
-                        icon: 'success',                        
-                        title:'Brand added successfully!',
+                        icon: 'success',
+                        title: 'Brand added successfully!',
                         showConfirmButton: false,
                         timer: 1500
-                    })                    
-                    console.log("Received data: >>>>\n",data);
+                    })
+                    console.log("Received data: >>>>\n", data);
                 }
             })
     }

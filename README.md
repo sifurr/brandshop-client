@@ -9,3 +9,8 @@
 * Site is using the NoSQL MongoDB database 
 * Site is responsive for mobile, tablet, and desktop computer
 * Dark/Light mode toggler available for the home page
+
+
+
+
+Live site: https://brandshop-assignment-10-62b49.web.app

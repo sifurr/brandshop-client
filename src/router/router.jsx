@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: ()=> fetch(`http://localhost:5000/brands`)
+        loader: () => fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/brands`)
       },
       {
         path: '/add-product',

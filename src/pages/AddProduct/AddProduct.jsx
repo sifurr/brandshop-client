@@ -6,9 +6,9 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 const AddProduct = () => {
 
-    const {user} = useContext(AuthContext);
-    const {email} = user;
-    console.log("user email",typeof email);
+    const { user } = useContext(AuthContext);
+    const { email } = user;
+    console.log("user email", typeof email);
 
     const handleAddProduct = event => {
         event.preventDefault();
@@ -21,25 +21,25 @@ const AddProduct = () => {
         const shortDescription = form.shortDescription.value;
         const rating = form.rating.value;
         const cartRequest = false;
-        const product = {name,image,brandName,type,price,shortDescription, rating, email, cartRequest}
+        const product = { name, image, brandName, type, price, shortDescription, rating, email, cartRequest }
         // console.log("Product info: >>> \n",product);
 
-        fetch(`http://localhost:5000/products`,{
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/products`, {
             method: 'POST',
-            headers: {'content-type':'application/json'},
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(product)
         })
             .then(res => res.json())
             .then(data => {
-                if(data.insertedId){
+                if (data.insertedId) {
                     form.reset();
                     Swal.fire({
-                        icon: 'success',                        
-                        title:'Product added successfully!',
+                        icon: 'success',
+                        title: 'Product added successfully!',
                         showConfirmButton: false,
                         timer: 1500
                     })
-                    console.log("Received data: >>>>\n",data);
+                    console.log("Received data: >>>>\n", data);
                 }
             })
     }
@@ -51,17 +51,17 @@ const AddProduct = () => {
                 <div className="grid gap-6 mb-6 md:grid-cols-2">
                     <div>
                         <label htmlFor="name" className="block mb-2 text-sm font-medium text-white dark:text-white">Name</label>
-                        <input type="text" id="name" name="name" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product title"  />
+                        <input type="text" id="name" name="name" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product title" />
                     </div>
                     <div>
                         <label htmlFor="image" className="block mb-2 text-sm font-medium text-white dark:text-white">Image</label>
-                        <input type="text" name="image" id="image" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product image url"  />
+                        <input type="text" name="image" id="image" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Product image url" />
                     </div>
                     <div>
                         <label htmlFor="company" className="block mb-2 text-sm font-medium text-white dark:text-white">Brand Name</label>
-                        <input type="text" name="brandName" id="company" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Brand name"  />
+                        <input type="text" name="brandName" id="company" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Brand name" />
                     </div>
-                    <div>                        
+                    <div>
                         <label htmlFor="type" className="block mb-2 text-sm font-medium text-white dark:text-white">Type</label>
                         <select id="type" name="type" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                             <option selected>Select a product type</option>
@@ -73,17 +73,17 @@ const AddProduct = () => {
                     </div>
                     <div>
                         <label htmlFor="website" className="block mb-2 text-sm font-medium text-white dark:text-white">Price</label>
-                        <input type="text" name="price" id="website" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Price"  />
+                        <input type="text" name="price" id="website" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Price" />
                     </div>
 
                 </div>
                 <div className="mb-6">
                     <label htmlFor="description" className="block mb-2 text-sm font-medium text-white dark:text-white">Short Description</label>
-                    <textarea name="shortDescription" id="description" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Short description"  />
+                    <textarea name="shortDescription" id="description" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Short description" />
                 </div>
                 <div className="mb-6">
                     <label htmlFor="rating" className="block mb-2 text-sm font-medium text-white dark:text-white">Rating</label>
-                    <input name="rating" type="text" id="rating" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Rating"  />
+                    <input name="rating" type="text" id="rating" className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Rating" />
                 </div>
 
                 <button type="submit" className="text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add Product</button>

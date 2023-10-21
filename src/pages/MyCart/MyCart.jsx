@@ -22,7 +22,7 @@ const MyCart = () => {
 
     // okay fetch product from product collection
     useEffect(() => {
-        fetch(`http://localhost:5000/products`)
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/products`)
             .then(res => res.json())
             .then(data => {
                 // console.log("cart products from database : ", data);
@@ -43,7 +43,7 @@ const MyCart = () => {
         const addedProductId = { cartRequest };
         console.log("cart request info: >>> \n", cartRequest);
 
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/products/${id}`, {
             method: 'PATCH',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(addedProductId)

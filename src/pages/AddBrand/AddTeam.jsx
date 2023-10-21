@@ -12,23 +12,23 @@ const AddTeam = () => {
         const member = { name, photo, designation, about }
         console.log("Team info: >>> \n", member);
 
-        fetch(`http://localhost:5000/team`,{
+        fetch(`https://brand-shop-server-side-ghmk6yp8z-saifurs-projects.vercel.app/team`, {
             method: 'POST',
-            headers: {'content-type':'application/json'},
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify(member)
         })
             .then(res => res.json())
             .then(data => {
-                if(data.insertedId){
+                if (data.insertedId) {
                     form.reset();
                     // Swal.fire('Brand added successfully!')
                     Swal.fire({
-                        icon: 'success',                        
-                        title:'Team added successfully!',
+                        icon: 'success',
+                        title: 'Team added successfully!',
                         showConfirmButton: false,
                         timer: 1500
-                    })                    
-                    console.log("Received data: >>>>\n",data);
+                    })
+                    console.log("Received data: >>>>\n", data);
                 }
             })
     }
